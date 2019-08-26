@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="data" type="com.android.githubproject.data.entity.Repository"/>
+
+        <import type="android.view.View"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp">
+
+        <TextView
+                android:id="@+id/tv_name_item_repos_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@{data.name}"
+                android:textColor="@{data.stargazersCount > 50 ? @color/colorRed : @color/colorBlack}"
+                tools:text="Name"
+                android:textSize="20sp"
+                app:layout_constraintHorizontal_chainStyle="packed"/>
+
+        <TextView
+                android:id="@+id/tv_stargazers_count_item_repos_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/tv_name_item_repos_view"
+                android:textColor="@{data.stargazersCount > 50 ? @color/colorRed : @color/colorBlack}"
+                android:text="@{String.valueOf(data.stargazersCount)}"
+                tools:text="Count" android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name_item_repos_view"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+                android:id="@+id/tv_description_item_repos_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{data.description}"
+                tools:text="Description"
+                android:textColor="@{data.stargazersCount > 50 ? @color/colorRed : @color/colorBlack}"
+                app:layout_constraintTop_toBottomOf="@id/tv_stargazers_count_item_repos_view"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent
+"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
